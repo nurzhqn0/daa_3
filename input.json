@@ -2,6 +2,21 @@
   "graphs": [
     {
       "id": 1,
+      "nodes": ["A", "B", "C", "D", "E", "F"],
+      "edges": [
+        {"from": "A", "to": "B", "weight": 4},
+        {"from": "A", "to": "C", "weight": 3},
+        {"from": "B", "to": "C", "weight": 2},
+        {"from": "B", "to": "D", "weight": 5},
+        {"from": "C", "to": "D", "weight": 7},
+        {"from": "C", "to": "E", "weight": 8},
+        {"from": "D", "to": "E", "weight": 6},
+        {"from": "D", "to": "F", "weight": 9},
+        {"from": "E", "to": "F", "weight": 10}
+      ]
+    },
+    {
+      "id": 2,
       "nodes": ["N1", "N2", "N3", "N4", "N5", "N6", "N7", "N8", "N9", "N10", "N11", "N12", "N13", "N14", "N15"],
       "edges": [
         {"from": "N1", "to": "N2", "weight": 12},
@@ -28,6 +43,66 @@
         {"from": "N12", "to": "N15", "weight": 13},
         {"from": "N13", "to": "N15", "weight": 7},
         {"from": "N14", "to": "N15", "weight": 6}
+      ]
+    },
+    {
+      "id": 3,
+      "nodes": ["V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30"],
+      "edges": [
+        {"from": "V1", "to": "V2", "weight": 5},
+        {"from": "V1", "to": "V3", "weight": 8},
+        {"from": "V1", "to": "V4", "weight": 12},
+        {"from": "V2", "to": "V3", "weight": 3},
+        {"from": "V2", "to": "V5", "weight": 7},
+        {"from": "V3", "to": "V4", "weight": 6},
+        {"from": "V3", "to": "V6", "weight": 10},
+        {"from": "V4", "to": "V7", "weight": 9},
+        {"from": "V5", "to": "V6", "weight": 4},
+        {"from": "V5", "to": "V8", "weight": 11},
+        {"from": "V6", "to": "V7", "weight": 8},
+        {"from": "V6", "to": "V9", "weight": 13},
+        {"from": "V7", "to": "V10", "weight": 7},
+        {"from": "V8", "to": "V9", "weight": 5},
+        {"from": "V8", "to": "V11", "weight": 14},
+        {"from": "V9", "to": "V10", "weight": 6},
+        {"from": "V9", "to": "V12", "weight": 9},
+        {"from": "V10", "to": "V13", "weight": 10},
+        {"from": "V11", "to": "V12", "weight": 4},
+        {"from": "V11", "to": "V14", "weight": 12},
+        {"from": "V12", "to": "V13", "weight": 8},
+        {"from": "V12", "to": "V15", "weight": 11},
+        {"from": "V13", "to": "V16", "weight": 7},
+        {"from": "V14", "to": "V15", "weight": 5},
+        {"from": "V14", "to": "V17", "weight": 13},
+        {"from": "V15", "to": "V16", "weight": 9},
+        {"from": "V15", "to": "V18", "weight": 10},
+        {"from": "V16", "to": "V19", "weight": 6},
+        {"from": "V17", "to": "V18", "weight": 4},
+        {"from": "V17", "to": "V20", "weight": 14},
+        {"from": "V18", "to": "V19", "weight": 8},
+        {"from": "V18", "to": "V21", "weight": 11},
+        {"from": "V19", "to": "V22", "weight": 7},
+        {"from": "V20", "to": "V21", "weight": 5},
+        {"from": "V20", "to": "V23", "weight": 12},
+        {"from": "V21", "to": "V22", "weight": 9},
+        {"from": "V21", "to": "V24", "weight": 13},
+        {"from": "V22", "to": "V25", "weight": 6},
+        {"from": "V23", "to": "V24", "weight": 4},
+        {"from": "V23", "to": "V26", "weight": 10},
+        {"from": "V24", "to": "V25", "weight": 8},
+        {"from": "V24", "to": "V27", "weight": 11},
+        {"from": "V25", "to": "V28", "weight": 7},
+        {"from": "V26", "to": "V27", "weight": 5},
+        {"from": "V26", "to": "V29", "weight": 14},
+        {"from": "V27", "to": "V28", "weight": 9},
+        {"from": "V27", "to": "V30", "weight": 12},
+        {"from": "V28", "to": "V30", "weight": 6},
+        {"from": "V29", "to": "V30", "weight": 8},
+        {"from": "V1", "to": "V10", "weight": 15},
+        {"from": "V5", "to": "V15", "weight": 16},
+        {"from": "V10", "to": "V20", "weight": 17},
+        {"from": "V15", "to": "V25", "weight": 18},
+        {"from": "V20", "to": "V30", "weight": 19}
       ]
     }
   ]
