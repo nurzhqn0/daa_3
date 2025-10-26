@@ -1,61 +1,68 @@
 package algo_analysis;
 
+import algo_analysis.algorithms.*;
+import algo_analysis.dto.*;
 import algo_analysis.entity.*;
+import algo_analysis.io.JSONHandler;
+
+import java.io.IOException;
+import java.util.*;
 
 public class Main {
+
     public static void main(String[] args) {
-        Graph<String> graph = new Graph<>();
+        try {
+            // input
+            List<GraphData> graphDataList = JSONHandler.readInput("input.json");
 
-        Vertex<String> v1 = new Vertex<>("A");
-        Vertex<String> v2 = new Vertex<>("B");
-        Vertex<String> v3 = new Vertex<>("C");
-        Vertex<String> v4 = new Vertex<>("D");
+            List<GraphResult> results = new ArrayList<>();
 
-        graph.addVertex(v1);
-        graph.addVertex(v2);
-        graph.addVertex(v3);
-        graph.addVertex(v4);
+            for (GraphData graphData : graphDataList) {
+                System.out.println("-- Graph " + graphData.id + " --");
 
-        System.out.println("All vertices: " + graph.getAllVertices());
+                Graph<String> graph = JSONHandler.buildGraph(graphData);
 
-        graph.addEdge(v1, v2, 5.0);
-        graph.addEdge(v1, v3, 3.0);
-        graph.addEdge(v2, v3, 2.0);
-        graph.addEdge(v2, v4, 7.0);
-        graph.addEdge(v3, v4, 1.0);
+                System.out.println("Vertices: " + graph.getVertexCount());
+                System.out.println("Edges: " + graph.getEdgeCount());
+                System.out.println("Connected: " + graph.isConnected());
 
-        System.out.println("All edges:");
-        for (Edge<String> edge : graph.getAllEdges()) {
-            System.out.println("  " + edge);
-        }
-        ;
-        System.out.println("Is A adjacent to B? " + graph.isAdjacent(v1, v2));
-        System.out.println("Is A adjacent to D? " + graph.isAdjacent(v1, v4));
+                GraphResult result = new GraphResult(
+                        graphData.id,
+                        graph.getVertexCount(),
+                        graph.getEdgeCount()
+                );
 
-        System.out.println("\n=== Neighbors ===");
-        System.out.println("Neighbors of A: " + graph.getNeighbors(v1));
-        System.out.println("Neighbors of B: " + graph.getNeighbors(v2));
-        System.out.println("Neighbors of C: " + graph.getNeighbors(v3));
+                // Prim's Algo
+                result.primResult = PrimAlgorithm.findMST(graph);
+                System.out.println("✓ MST Cost: " + result.primResult.totalCost +
+                        " | Operations: " + result.primResult.operationsCount +
+                        " | Time: " + String.format("%.2f", result.primResult.executionTimeMs) + "ms");
 
-        System.out.println("\n=== Get Specific Edge ===");
+                // Kruskal's Algo
+                result.kruskalResult = KruskalAlgorithm.findMST(graph);
+                System.out.println("✓ MST Cost: " + result.kruskalResult.totalCost +
+                        " | Operations: " + result.kruskalResult.operationsCount +
+                        " | Time: " + String.format("%.2f", result.kruskalResult.executionTimeMs) + "ms");
 
-        // Remove an edge
-        System.out.println("\n=== Remove Edge ===");
-        graph.removeEdge(v2, v4, 7.0);
-        System.out.println("Removed edge B-D");
-        System.out.println("All edges after removal:");
-        for (Edge<String> edge2 : graph.getAllEdges()) {
-            System.out.println("  " + edge2);
-        }
+                results.add(result);
+                System.out.println();
+            }
 
-        // Remove a vertex
-        System.out.println("\n=== Remove Vertex ===");
-        graph.removeVertex(v4);
-        System.out.println("Removed vertex D");
-        System.out.println("All vertices: " + graph.getAllVertices());
-        System.out.println("All edges after vertex removal:");
-        for (Edge<String> edge2 : graph.getAllEdges()) {
-            System.out.println("  " + edge2);
+            // output
+            JSONHandler.writeOutput("output.json", results);
+
+            // summary
+            System.out.println("\n== Summary ==");
+            for (GraphResult result : results) {
+                System.out.println("Graph " + result.graphId + ":");
+                System.out.println("  MST Cost: " + result.primResult.totalCost);
+                System.out.println("  Prim Operations: " + result.primResult.operationsCount);
+                System.out.println("  Kruskal Operations: " + result.kruskalResult.operationsCount);
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
