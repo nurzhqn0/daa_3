@@ -9,18 +9,6 @@ public class Graph<T> {
     private Set<Vertex<T>> vertices;
     private Set<Edge<T>> edges;
 
-    public void setAdjacencyList(HashMap<Vertex<T>, Set<Vertex<T>>> adjacencyList) {
-        this.adjacencyList = adjacencyList;
-    }
-
-    public void setVertices(Set<Vertex<T>> vertices) {
-        this.vertices = vertices;
-    }
-
-    public void setEdges(Set<Edge<T>> edges) {
-        this.edges = edges;
-    }
-
     public Graph() {
         this.adjacencyList = new HashMap<>();
         this.vertices = new HashSet<>();
@@ -28,6 +16,10 @@ public class Graph<T> {
     }
 
     public void addVertex(Vertex<T> vertex) {
+        if (vertex == null) {
+            throw new IllegalArgumentException("Vertex cannot be null.");
+        }
+
         if (this.vertices.contains(vertex)) {
             throw new IllegalArgumentException("Vertex already exists.");
         }
@@ -58,6 +50,9 @@ public class Graph<T> {
         }
 
         Edge<T> edge = new Edge<>(source, target, weight);
+        if (this.edges.contains(edge)) {
+            throw new IllegalArgumentException("Edge already exists.");
+        }
         this.edges.add(edge);
 
         this.adjacencyList.get(source).add(target);

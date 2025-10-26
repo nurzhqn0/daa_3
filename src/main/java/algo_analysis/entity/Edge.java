@@ -4,14 +4,6 @@ public class Edge<T> {
     private Vertex<T> source;
     private Vertex<T> target;
 
-    public void setSource(Vertex<T> source) {
-        this.source = source;
-    }
-
-    public void setTarget(Vertex<T> target) {
-        this.target = target;
-    }
-
     private double weight;
 
     public Edge(Vertex<T> source, Vertex<T> target, double weight) {
