@@ -148,6 +148,6 @@ The analysis demonstrates that **Kruskal's algorithm scales significantly better
 ## Author
 **Student**: Nurzhan Izimbetov <br>
 **Group**: SE-2436<br>
-**Github**: [nurzhqn0](https://github.com/nurzhqn0)![img.png](img.png)
+**Github**: [nurzhqn0](https://github.com/nurzhqn0)
 
 ---
