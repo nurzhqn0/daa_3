@@ -1,8 +1,6 @@
 package algo_analysis.entity;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+
+import java.util.*;
 
 public class Graph<T> {
     private HashMap<Vertex<T>, Set<Vertex<T>>> adjacencyList;
@@ -92,5 +90,40 @@ public class Graph<T> {
 
     public Set<Edge<T>> getAllEdges() {
         return new HashSet<>(this.edges);
+    }
+
+    public int getVertexCount() {
+        return this.vertices.size();
+    }
+
+    public int getEdgeCount() {
+        return this.edges.size();
+    }
+
+//    check if the graph is connected using dfs
+    public boolean isConnected() {
+        if (vertices.isEmpty()) return true;
+
+        Set<Vertex<T>> visited = new HashSet<>();
+        Vertex<T> start = vertices.iterator().next();
+        dfsHelper(start, visited);
+
+        return visited.size() == vertices.size();
+    }
+
+    private void dfsHelper(Vertex<T> vertex, Set<Vertex<T>> visited) {
+        visited.add(vertex);
+        for (Vertex<T> neighbor : getNeighbors(vertex)) {
+            if (!visited.contains(neighbor)) {
+                dfsHelper(neighbor, visited);
+            }
+        }
+    }
+
+//    get a vertex by data value
+    public Optional<Vertex<T>> getVertexByData(T data) {
+        return vertices.stream()
+                .filter(v -> v.getData().equals(data))
+                .findFirst();
     }
 }

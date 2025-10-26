@@ -5,18 +5,17 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
-  <artifactId>daa-assignment1</artifactId>
+  <artifactId>daa-assignment3</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>DAA Assignment 3</name>
-  <description>Data Structures and Algorithms Assignment</description>
 
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <junit.version>5.9.2</junit.version>
+    <junit.version>5.10.2</junit.version>
     <maven.surefire.version>3.0.0-M9</maven.surefire.version>
   </properties>
 
@@ -25,7 +24,7 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
-      <version>5.10.2</version>
+      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
 

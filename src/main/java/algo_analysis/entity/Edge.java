@@ -3,7 +3,6 @@ package algo_analysis.entity;
 public class Edge<T> {
     private Vertex<T> source;
     private Vertex<T> target;
-
     private double weight;
 
     public Edge(Vertex<T> source, Vertex<T> target, double weight) {
@@ -22,10 +21,6 @@ public class Edge<T> {
 
     public double getWeight() {
         return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
     }
 
     @Override
